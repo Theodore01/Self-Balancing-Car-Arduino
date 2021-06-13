@@ -61,6 +61,3 @@ L293D με τους τροχούς:
 
 image:https://i.pinimg.com/originals/65/24/a7/6524a7409e7cd6b023f1877ce30376e0.jpg[wiring2,300,200]
 
-
-==== Κώδικας
-https://git.swarmlab.io:3000/Theodore/Seesaw_balancing_4WD_robot/src/branch/master/Measure_angle_Arduino_MPU6050.ino
