@@ -1,0 +1,66 @@
+= 4WD Seesaw balancing car
+
+==== *Δημιουργοί: Θεόδωρος Πουρνάρας(cs141128), Αίας-Παναγιώτης Δρακόπουλος(cs141020), Αλέξανδρος Βλαχακης(cs131127)*
+===== Περιγραφή εργασίας
+
+Η εργασία διαπραγματεύται ένα αυτοκίνητο τεσσάρων τροχών το οποίο πρέπει να ισορροπεί αυτόματα σε μια τραμπάλα.
+
+Το πρόβλημα που καλούμαστε να λύσουμε είναι το εξής:
+Σε μια τραμπάλα ισορροπεί το αυτοκίνητο. Βάζουμε ένα βαρίδιο με σκοπό να χαλάσουμε την ισορροπία αυτήν,
+το αυτοκίνητο θα πρέπει να κινηθεί με τέτοιον τρόπο ώστε η τραμπάλα να ξανά ισορροπήσει.
+Μετά θα βγάλουμε το βαρίδιο και το αμάξι θα πρέπει να κινηθεί για να ισορροπήσει ξανά.
+
+*Το αμάξι θα πρέπει να ισορροπεί για 30 δευτερόλεπτα.*
+
+===== Εξαρτήματα: Arduino Uno,MPU-9250,Motor Shield L293D,4WD Cardboard Car Kit
+
+*Arduino Uno*:
+
+[#img-Uno]
+[caption="Figure 1: ",link=https://c.scdn.gr/images/sku_main_images/008846/8846565/large_20190607104956_uno_r3_atmega328p.jpeg]
+image::https://c.scdn.gr/images/sku_main_images/008846/8846565/large_20190607104956_uno_r3_atmega328p.jpeg[Uno,300,200]
+
+*MPU-9250*:
+
+[#img-mpu]
+[caption="Figure 2: ",link=https://www.cableworks.gr/images/thumbnails/499/437/detailed/255/mpu9250.jpg]
+image::https://www.cableworks.gr/images/thumbnails/499/437/detailed/255/mpu9250.jpg[mpu,300,200]
+
+*Motor Shield L293D*:
+[#img-l293d]
+[caption="Figure 3: ",link=https://www.cableworks.gr/images/thumbnails/400/350/detailed/254/l293d_motor_shield.jpg]
+image::https://www.cableworks.gr/images/thumbnails/400/350/detailed/254/l293d_motor_shield.jpg[l293d,300,200]
+
+*Τελικό προϊόν*:
+
+image::https://cdn.discordapp.com/attachments/327935497630515200/667414169162612746/IMG_20200116_185600.jpg[final1,300,200]
+
+image::https://cdn.discordapp.com/attachments/327935497630515200/667413990594314270/IMG_20200116_185611.jpg[final2,300,200]
+
+image::https://cdn.discordapp.com/attachments/327935497630515200/667413833874407447/IMG_20200116_185617.jpg[final3,300,200]
+
+video::video-1579697375.mp4[width=640]
+
+*Επειδή το powerbank δεν δίνει αρκετό ρεύμα δεν λειτουργούν όλοι οι τροχοί.*
+
+*Και επειδή το γυροσκόπιο δεν είναι σταθερό το αμάξι κουνιέται λίγο.*
+
+==== *Συνδεσμολογία*:
+
+Arduino με το γυροσκόπιο (MPU-9250):
+
+image:https://lucidar.me/en/inertial-measurement-unit/files/wiring-mpu-9250-arduino-mega.png[wiring,300,200]
+
+Arduino με το L293D:
+
+Επειδή το L293D είναι τύπου shield τοποθετείται πάνω στο Arduino.
+
+image:https://udvabony.com/wp-content/uploads/2019/05/L293D-V1-Motor-Driver-Shield-on-Uno.jpg[wiring1,300,200]
+
+L293D με τους τροχούς:
+
+image:https://i.pinimg.com/originals/65/24/a7/6524a7409e7cd6b023f1877ce30376e0.jpg[wiring2,300,200]
+
+
+==== Κώδικας
+https://git.swarmlab.io:3000/Theodore/Seesaw_balancing_4WD_robot/src/branch/master/Measure_angle_Arduino_MPU6050.ino
