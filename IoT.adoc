@@ -17,8 +17,8 @@
 *Arduino Uno*:
 
 [#img-Uno]
-[caption="Figure 1: ",link=https://c.scdn.gr/images/sku_main_images/008846/8846565/large_20190607104956_uno_r3_atmega328p.jpeg]
-image::https://c.scdn.gr/images/sku_main_images/008846/8846565/large_20190607104956_uno_r3_atmega328p.jpeg[Uno,300,200]
+[caption="Figure 1: ",link=https://www.why.gr/wp-content/uploads/2019/07/705209a.jpg]
+image::https://www.why.gr/wp-content/uploads/2019/07/705209a.jpg[Uno,300,200]
 
 *MPU-9250*:
 
