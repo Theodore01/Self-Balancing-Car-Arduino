@@ -8,7 +8,7 @@ Motor Shield L293D
 
 **Arduino Uno:**
 
-![](https://c.scdn.gr/images/sku_main_images/008846/8846565/large_20190607104956_uno_r3_atmega328p.jpeg)
+![](https://www.why.gr/wp-content/uploads/2019/07/705209a.jpg)
 
 **MPU-9250:**
 
