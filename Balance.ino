@@ -1,19 +1,19 @@
 #include <Wire.h>
 #include <AFMotor.h>
 //Declaring some global variables
-int gyro_x, gyro_y, gyro_z;
-long gyro_x_cal, gyro_y_cal, gyro_z_cal;
+int gyro_x, gyro_y, gyro_z = 0;
+long gyro_x_cal, gyro_y_cal, gyro_z_cal = 0.0;
 boolean set_gyro_angles;
 
-long acc_x, acc_y, acc_z, acc_total_vector;
-float angle_roll_acc, angle_pitch_acc;
+long acc_x, acc_y, acc_z, acc_total_vector = 0.0;
+float angle_roll_acc, angle_pitch_acc = 0.0;
 
-float angle_pitch, angle_roll;
-int angle_pitch_buffer, angle_roll_buffer;
-float angle_pitch_output, angle_roll_output;
+float angle_pitch, angle_roll = 0.0;
+int angle_pitch_buffer, angle_roll_buffer = 0;
+float angle_pitch_output, angle_roll_output = 0.0;
 
-long loop_timer;
-int temp;
+long loop_timer = 0.0;
+int temp = 0;
 AF_DCMotor motor1(1);
 AF_DCMotor motor2(2);
 AF_DCMotor motor3(3);
@@ -70,8 +70,8 @@ void loop() {
   angle_roll_acc -= 0.0;                                               //Accelerometer calibration value for roll
 
   if (set_gyro_angles) {                                               //If the IMU is already started
-    angle_pitch = angle_pitch * 0.9996 + angle_pitch_acc * 0.0004;     //Correct the drift of the gyro pitch angle with the accelerometer pitch angle
-    angle_roll = angle_roll * 0.9996 + angle_roll_acc * 0.0004;        //Correct the drift of the gyro roll angle with the accelerometer roll angle
+    angle_pitch = angle_pitch *  0.9996 + angle_pitch_acc * 0.0004;     //Correct the drift of the gyro pitch angle with the accelerometer pitch angle
+    angle_roll = angle_roll *  0.9996 + angle_roll_acc * 0.0004;        //Correct the drift of the gyro roll angle with the accelerometer roll angle
   }
   else {                                                               //At first start
     angle_pitch = angle_pitch_acc;                                     //Set the gyro pitch angle equal to the accelerometer pitch angle
@@ -80,14 +80,17 @@ void loop() {
   }
 
   //To dampen the pitch and roll angles a complementary filter is used
-  angle_pitch_output = angle_pitch_output * 0.9 + angle_pitch * 0.1;   //Take 90% of the output pitch value and add 10% of the raw pitch value
-  angle_roll_output = angle_roll_output * 0.9 + angle_roll * 0.1;      //Take 90% of the output roll value and add 10% of the raw roll value
+  angle_pitch_output = angle_pitch_output * 0.9 + angle_pitch_acc * 0.1;   //Take 90% of the output pitch value and add 10% of the raw pitch value
+  angle_roll_output = angle_roll_output *  0.9 + angle_roll_acc * 0.1;      //Take 90% of the output roll value and add 10% of the raw roll value
   Serial.print(" | Angle  = "); Serial.println(angle_pitch_output);
 
 
-  while (micros() - loop_timer < 4000);                                //Wait until the loop_timer reaches 4000us (250Hz) before starting the next loop
+
+  while (micros() - loop_timer < 10);
+  {//Wait until the loop_timer reaches 4000us (250Hz) before starting the next loop
   loop_timer = micros();//Reset the loop timer
-  if (angle_pitch_output > 0)
+  }
+  if (angle_pitch_output > 3)
   {
     motor1.run(FORWARD);
     motor2.run(FORWARD);
@@ -95,7 +98,7 @@ void loop() {
     motor4.run(FORWARD);
     
   }
-  else if (angle_pitch_output < 0)
+  else if (angle_pitch_output < -3)
   {
     motor1.run(BACKWARD);
     motor2.run(BACKWARD);
@@ -103,7 +106,7 @@ void loop() {
     motor4.run(BACKWARD);
     
   }
-  else if (angle_pitch_output == 0)
+  else if (angle_pitch_output >= -3 || angle_pitch_output <= 3)
   {
     motor1.run(RELEASE);
     motor2.run(RELEASE);
