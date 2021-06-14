@@ -55,7 +55,7 @@ Arduino με το L293D:
 
 Επειδή το L293D είναι τύπου shield τοποθετείται πάνω στο Arduino.
 
-image:https://udvabony.com/wp-content/uploads/2019/05/L293D-V1-Motor-Driver-Shield-on-Uno.jpg[wiring1,300,200]
+image:https://acoptex.com/uploads/4DCmotorsL293motordrivershield_bb.jpg[wiring1,300,200]
 
 L293D με τους τροχούς:
 
